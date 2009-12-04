@@ -25,7 +25,7 @@ class NewspaperHeadlines < Citrus::Plugin
       notice(channel, @publishers.keys.join(' / '))
     elsif @publishers.key? publisher_name
       get_headlines(@publishers[publisher_name]).each do |headline|
-        notice(channel, headline)
+        notice(channel, headline.to_s)
       end
     end
   end
@@ -43,5 +43,6 @@ class NewspaperHeadlines < Citrus::Plugin
       date  = item.date.strftime("%d日 %H:%M")
       headlines << "[#{date}] #{title} (#{url})"
     end
+    headlines
   end
 end
