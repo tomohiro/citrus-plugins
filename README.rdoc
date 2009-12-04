@@ -1,23 +1,29 @@
 = Citrus Plugins
 
+
 * http://github.com/Tomohiro/citrus-plugins
 
 == DESCRIPTION:
+
 
 IRC 用の BOT フレームワーク Citrus で動作するプラグインです。
 
 == INSTALL:
 
+
 下記ディレクトリ以下にファイルを配置してください。
+
 
 * citrus/plugins/
 
 == Plugin LIST:
 
+
 * amazon_search.rb - Amazon 検索
 * bmi.rb - BMI 値測定
 * fortune.rb - おみくじ
 * google_transit.rb - Google トランジット検索
+* nanapi.rb - ナナトピ検索
 * newspaper_headlines.rb - ニュース検索
 * screen_time_search.rb - 沖縄映画上映時間検索
 * sun_sign_astrology.rb - 12星座占い
