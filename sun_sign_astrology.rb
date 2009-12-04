@@ -1,7 +1,7 @@
 require 'nkf'
 
-require "open-uri"
-require 'hpricot'
+require 'open-uri'
+require 'nokogiri'
 
 class SunSignAstrology < Citrus::Plugin
   def initialize(*args)
@@ -14,10 +14,10 @@ class SunSignAstrology < Citrus::Plugin
     when /^(.+)#{@suffix}$/
       result = search_sign($1)
 
-      if result.empty?
+      if result == nil
         notice(channel, '／(^o^)＼ わかにゃいっ') 
       else 
-        notice(channel, result.to_s) 
+        notice(channel, result) 
       end
     end
   end
@@ -29,7 +29,7 @@ class SunSignAstrology < Citrus::Plugin
     result = ''
 
     ranking.each do |rank|
-      if rank[:name] == sign
+      if rank[:name].to_s == sign
         result = "#{rank[:name]} #{rank[:rank]} #{rank[:desc]}！だよ♪  (#{rank[:link]})"
       end
     end
@@ -38,7 +38,7 @@ class SunSignAstrology < Citrus::Plugin
 
   def get_ranking(uri)
     begin
-      doc = Hpricot(open(uri))
+      doc = Nokogiri::HTML(open(uri).read)
 
       names = doc/'td/p/img'
       ranks = doc/'td/img'
@@ -48,9 +48,9 @@ class SunSignAstrology < Citrus::Plugin
       names.each_with_index do |name, desc_counter|
         rank_counter = desc_counter + 1
         ranking << {
-          :name => name.attributes['alt'].to_u8,
-          :rank => ranks[rank_counter].attributes['alt'].to_u8,
-          :desc => descs[desc_counter].inner_text.to_u8,
+          :name => name.attributes['alt'],
+          :rank => ranks[rank_counter].attributes['alt'],
+          :desc => descs[desc_counter].text,
           :link => descs[desc_counter].attributes['href']
         }
       end
