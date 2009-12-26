@@ -4,8 +4,8 @@ require 'nokogiri'
 class Gasoline < Citrus::Plugin
   def initialize(*args)
     super
-    @suffix = @config['suffix'] || 'ガソリンいくら'
 
+    @suffix = @config['suffix'] || 'ガソリンいくら'
     @base_uri = 'http://gogo.gs'
     @rank_uri = @base_uri + '/rank/result/?pref=47&ws=&p_mode=0&mm=0&service%5B3%5D=3&desd=0&x=24&y=17'
   end
@@ -14,7 +14,7 @@ class Gasoline < Citrus::Plugin
     case message
     when /^#{@suffix}$/
       gasoline_ranking.each do |gs|
-      notice(channel, gs) 
+        notice(channel, gs) 
       end
     end
   end
