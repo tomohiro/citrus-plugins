@@ -1,4 +1,5 @@
-require "open-uri"
+require 'rubygems'
+require 'open-uri'
 require 'nokogiri'
 
 class ScreenTimeSearch < Citrus::Plugin
@@ -7,7 +8,7 @@ class ScreenTimeSearch < Citrus::Plugin
 
     @theaters_uri = [
       'http://www.startheaters.jp/schedule',
-      'http://www.google.co.jp/movies?hl=ja&near=Naha&tid=3d1a4be489681836'
+      'http://www.google.co.jp/movies?tid=3d1a4be489681836'
     ]
     @movies_uri = 'http://www.startheaters.jp/movie'
     @pickup_uri = 'http://www.startheaters.jp/'
@@ -79,8 +80,8 @@ class ScreenTimeSearch < Citrus::Plugin
         else
           theater_name = '[桜坂劇場]'
 
-          (doc/'td[@valign="top"]').each do |info|
-            movie_title = (info/'b[@dir="ltr"]').text
+          (html/'div.movie').each do |info|
+            movie_title = (info/'div.name/a/span[@dir="ltr"]').text
 
             if movie_title =~ expression
               time = info.inner_html.scan(/(..:..+?)</).last
