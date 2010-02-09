@@ -1,6 +1,6 @@
 require 'nokogiri'
 
-class Weather < Citrus::Plugin
+class GoogleWeather < Citrus::Plugin
   def initialize(*args)
     super
 
