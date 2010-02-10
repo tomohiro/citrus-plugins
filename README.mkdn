@@ -1,0 +1,37 @@
+Citrus Plugins
+================================================================================
+
+[Citrus Plugins](http://github.com/Tomohiro/citrus-plugins)
+
+DESCRIPTION:
+--------------------------------------------------------------------------------
+
+IRC 用の BOT フレームワーク Citrus で動作するプラグインです。
+
+INSTALL:
+--------------------------------------------------------------------------------
+
+下記ディレクトリ以下にファイルを配置してください。
+
+* citrus/plugins/
+
+Plugin LIST:
+--------------------------------------------------------------------------------
+
+    * amazon_search.rb - Amazon 検索
+    * bmi.rb - BMI 値測定
+    * codepad.rb - CodePad でコードを実行する
+    * fortune.rb - おみくじ
+    * gasoline.rb - 沖縄ガソリン価格ランキング
+    * google_profile.rb - Google プロフィール検索
+    * google_transit.rb - Google トランジット検索
+    * google_weather.rb - Google 天気検索
+    * nanapi.rb - ナナピ検索
+    * newspaper_headlines.rb - ニュース検索
+    * ramen.rb - 沖縄のオススメラーメン屋を教えてくれる
+    * rate.rb - なんとか度判定メーカー
+    * screen_time_search.rb - 沖縄映画上映時間検索
+    * sun_sign_astrology.rb - 12星座占い
+    * tweet.rb - 最新 Tweet 閲覧
+    * typhoon.rb - 台風情報検索
+    * uri_shorten.rb - URI 短縮 via j.mp
