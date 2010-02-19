@@ -5,7 +5,7 @@ class CodePad < Citrus::Plugin
   def initialize(*args)
     super
 
-    @agent = WWW::Mechanize.new
+    @agent = Mechanize.new
     proxy = ENV['https_proxy'] || ENV['http_proxy']
     if proxy
       proxy = URI.parse(proxy)
